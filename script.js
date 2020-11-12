@@ -7,6 +7,7 @@ function secretNumbers() {
 let score = 20;
 let highscore = 0;
 let secretNumber = secretNumbers();
+// document.querySelector('.number').textContent = secretNumber;
 
 
 function printCurrenValue() {
@@ -43,6 +44,7 @@ document.querySelector('.again').addEventListener('click', function () {
     document.querySelector('.number').style.width = '15rem';
     document.querySelector('.message').textContent = 'Start guessing...';
     document.querySelector('.guess').value = '';
+    secretNumber = secretNumbers();
     highscore = 0
     document.querySelector('.label-highscore').textContent  = '🥇 Highscore: ' + highscore
 });
