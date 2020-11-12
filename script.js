@@ -13,29 +13,33 @@ document.querySelector('.number').textContent = secretNumber;
 function printCurrenValue() {
     const guess = Number(document.querySelector('.guess').value);
 
-    console.log(guess);
     if (!guess) {
         document.querySelector('.message').textContent = '❌ No Number';
-    } //win here
+    }
     else if (secretNumber === guess) {
         document.querySelector('.message').textContent = 'Number Match 😍';
         document.querySelector('body').style.backgroundColor = '#60b347';
         document.querySelector('.number').style.width = '30rem';
-        // if(highscore< score){
-        //     highscore = score
-        //     console.log(highscore)
-        //     document.querySelector('.label-highscore').textContent = '🥇 Highscore: ' + highscore
-        // }
-    } else if (guess > secretNumber) {
-        document.querySelector('.message').textContent = 'Too High 🙄';
-        score--;
-        document.querySelector('.score').textContent = score;
-    } else if (guess < secretNumber) {
-        document.querySelector('.message').textContent = 'Too Low 🤐';
-        console.log(document.querySelector('.score').textContent);
-        score--;
-        document.querySelector('.score').textContent = score;
-    } else {
+        if(highscore< score){
+            highscore = score
+            console.log(highscore)
+            document.querySelector('.label-highscore').textContent = '🥇 Highscore: ' + highscore
+        }
+    } else if (guess!=secretNumber) {
+        if(score>=1){
+            document.querySelector('.message').textContent = (guess<secretNumber?'Too Low 🤐':'Too High 🙄');
+            score--;
+            document.querySelector('.score').textContent = score;
+
+        }
+    }
+    // else if (guess < secretNumber) {
+    //     document.querySelector('.message').textContent = 'Too Low 🤐';
+    //     console.log(document.querySelector('.score').textContent);
+    //     score--;
+    //     document.querySelector('.score').textContent = score;
+    // } 
+    else {
         document.querySelector('.message').textContent = 'Not Match 😥';
     }
 }
@@ -49,5 +53,7 @@ document.querySelector('.again').addEventListener('click', function () {
     document.querySelector('.guess').value = '';
     secretNumber = secretNumbers();
     document.querySelector('.number').textContent = secretNumber;
+    highscore = 0
+    document.querySelector('.label-highscore').textContent  = '🥇 Highscore: ' + highscore
 
 });
