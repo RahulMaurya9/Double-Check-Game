@@ -8,7 +8,6 @@ let score = 20;
 let highscore = 0;
 let secretNumber = secretNumbers();
 
-document.querySelector('.number').textContent = secretNumber;
 
 function printCurrenValue() {
     const guess = Number(document.querySelector('.guess').value);
@@ -30,15 +29,8 @@ function printCurrenValue() {
             document.querySelector('.message').textContent = (guess<secretNumber?'Too Low 🤐':'Too High 🙄');
             score--;
             document.querySelector('.score').textContent = score;
-
         }
     }
-    // else if (guess < secretNumber) {
-    //     document.querySelector('.message').textContent = 'Too Low 🤐';
-    //     console.log(document.querySelector('.score').textContent);
-    //     score--;
-    //     document.querySelector('.score').textContent = score;
-    // } 
     else {
         document.querySelector('.message').textContent = 'Not Match 😥';
     }
@@ -51,9 +43,6 @@ document.querySelector('.again').addEventListener('click', function () {
     document.querySelector('.number').style.width = '15rem';
     document.querySelector('.message').textContent = 'Start guessing...';
     document.querySelector('.guess').value = '';
-    secretNumber = secretNumbers();
-    document.querySelector('.number').textContent = secretNumber;
     highscore = 0
     document.querySelector('.label-highscore').textContent  = '🥇 Highscore: ' + highscore
-
 });
